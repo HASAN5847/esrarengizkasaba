@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>McGucket Laptop v0.87 - CLASSIFIED</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #00ff41;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+        }
+        .laptop {
+            width: 860px;
+            margin: 30px auto;
+            border: 25px solid #1a1a1a;
+            border-top: 50px solid #111;
+            box-shadow: 0 0 40px #00ff41, inset 0 0 60px rgba(0, 255, 65, 0.2);
+        }
+        .screen {
+            height: 520px;
+            background: radial-gradient(circle at center, #001a00 0%, #000000 70%);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #00cc00;
+        }
+        .portal-bg {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.2) 20%, transparent 60%);
+            animation: portalPulse 8s infinite alternate;
+            opacity: 0.5;
+            z-index: 1;
+        }
+        @keyframes portalPulse {
+            0% { transform: scale(0.8) rotate(0deg); }
+            100% { transform: scale(1.25) rotate(20deg); }
+        }
+        .content { position: relative; z-index: 2; padding: 20px; height: 100%; }
+        .header {
+            text-align: center;
+            color: #ff0044;
+            text-shadow: 0 0 15px #ff0044;
+            font-size: 18px;
+            margin-bottom: 10px;
+            animation: glitch 0.8s infinite;
+        }
+        .password-area { text-align: center; margin: 40px 0; }
+        input {
+            background: #000;
+            border: 2px solid #00ff41;
+            color: #00ff41;
+            padding: 12px;
+            font-size: 18px;
+            width: 320px;
+            text-align: center;
+        }
+        button {
+            background:#00aa00; 
+            color:black; 
+            border:none; 
+            padding:10px 30px; 
+            font-size:16px; 
+            cursor:pointer;
+            margin-top: 10px;
+        }
+        .files { display: none; }
+        .file {
+            background: rgba(0, 40, 0, 0.7);
+            border-left: 5px solid #ffaa00;
+            padding: 12px;
+            margin: 12px 0;
+        }
+        .glitch { animation: glitch 0.4s linear infinite; }
+        @keyframes glitch {
+            2%, 64% { transform: translate(2px,0) skew(0deg); }
+            4%, 60% { transform: translate(-2px,0) skew(0deg); }
+        }
+        .error { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
+    </style>
+</head>
+<body>
+    <div class="laptop">
+        <div class="screen">
+            <div class="portal-bg"></div>
+            
+            <div class="content">
+                <div class="header glitch">
+                    <h1>◼ FORD PINES RESEARCH ARCHIVE ◼</h1>
+                    <p>LEVEL 5 CLEARANCE - TOP SECRET</p>
+                </div>
+
+                <div id="passwordScreen">
+                    <div class="password-area">
+                        <p>ENTER PASSWORD TO ACCESS PORTAL DATA:</p>
+                        <input type="password" id="passInput" placeholder="********" maxlength="20" autofocus>
+                        <br><br>
+                        <button onclick="checkPassword()">UNLOCK PORTAL</button>
+                    </div>
+                </div>
+
+                <div id="files" class="files">
+                    <div class="file glitch">
+                        <strong>PORTAL STATUS:</strong> AKTİF — Boyutlar arası kapı açıldı<br>
+                        <span style="color:#ffff00;">Bill Cipher izliyor...</span>
+                    </div>
+                    
+                    <div class="file">
+                        <strong>FORD PINES NOTLARI</strong><br>
+                        • Anomaliler çok arttı.<br>
+                        • Bill ile anlaşma büyük hataydı.<br>
+                        • Portal kapatılmazsa kasaba yok olacak.
+                    </div>
+                    
+                    <div class="file">
+                        <strong>SONUÇ:</strong><br>
+                        Gerçeklik yırtılıyor. Her şey çakışıyor.
+                    </div>
+                    
+                    <p style="text-align:center; color:#ffff00; margin-top:30px; font-size:18px;">
+                        THE PORTAL IS OPENING...
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const input = document.getElementById('passInput').value.trim();
+            
+            if (input.toUpperCase() === "FORD PINES") {
+                document.getElementById('passwordScreen').style.display = 'none';
+                document.getElementById('files').style.display = 'block';
+                document.querySelector('.portal-bg').style.opacity = '0.95';
+            } else {
+                alert("ERİŞİM REDDEDİLDİ!\n\nYanlış şifre. Sistem kendini yok etmek üzere...\nFord Pines seni uyarıyor.");
+                document.getElementById('passInput').value = "";
+            }
+        }
+
+        // Enter tuşu desteği
+        document.getElementById('passInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkPassword();
+        });
+    </script>
+</body>
+</html>
