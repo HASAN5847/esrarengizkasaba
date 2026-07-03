@@ -4,23 +4,16 @@
     <meta charset="UTF-8">
     <title>McGucket Laptop v0.87 - CLASSIFIED</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #000;
-            color: #00ff41;
-            font-family: 'Courier New', monospace;
-            overflow: hidden;
-        }
+        body { margin:0; padding:0; background:#000; color:#00ff41; font-family:'Courier New', monospace; overflow:hidden; }
         .laptop {
             width: 860px;
             margin: 30px auto;
             border: 25px solid #1a1a1a;
             border-top: 50px solid #111;
-            box-shadow: 0 0 40px #00ff41, inset 0 0 60px rgba(0, 255, 65, 0.2);
+            box-shadow: 0 0 40px #00ff41;
         }
         .screen {
-            height: 520px;
+            height: 540px;
             background: radial-gradient(circle at center, #001a00 0%, #000000 70%);
             position: relative;
             overflow: hidden;
@@ -28,60 +21,43 @@
         }
         .portal-bg {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(138, 43, 226, 0.2) 20%, transparent 60%);
-            animation: portalPulse 8s infinite alternate;
-            opacity: 0.5;
-            z-index: 1;
+            inset: -50%;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.25) 30%, transparent 70%);
+            animation: portalPulse 7s infinite alternate;
+            opacity: 0.6;
         }
-        @keyframes portalPulse {
-            0% { transform: scale(0.8) rotate(0deg); }
-            100% { transform: scale(1.25) rotate(20deg); }
-        }
-        .content { position: relative; z-index: 2; padding: 20px; height: 100%; }
+        @keyframes portalPulse { 0%{transform:scale(0.85) rotate(0deg);} 100%{transform:scale(1.3) rotate(25deg);} }
+        
+        .content { position:relative; z-index:2; padding:20px; height:100%; }
         .header {
-            text-align: center;
-            color: #ff0044;
-            text-shadow: 0 0 15px #ff0044;
-            font-size: 18px;
-            margin-bottom: 10px;
-            animation: glitch 0.8s infinite;
+            text-align:center;
+            color:#ff0044;
+            text-shadow:0 0 15px #ff0044;
+            font-size:19px;
+            animation: glitch 0.7s infinite;
         }
-        .password-area { text-align: center; margin: 40px 0; }
+        .attempts { text-align:center; color:#ffaa00; margin:10px 0; }
+        .password-area { text-align:center; margin:30px 0; }
         input {
-            background: #000;
-            border: 2px solid #00ff41;
-            color: #00ff41;
-            padding: 12px;
-            font-size: 18px;
-            width: 320px;
-            text-align: center;
+            background:#000; border:2px solid #00ff41; color:#00ff41;
+            padding:12px; font-size:18px; width:340px; text-align:center;
         }
-        button {
-            background:#00aa00; 
-            color:black; 
-            border:none; 
-            padding:10px 30px; 
-            font-size:16px; 
-            cursor:pointer;
-            margin-top: 10px;
-        }
-        .files { display: none; }
+        button { background:#006600; color:#00ff41; border:2px solid #00ff41; padding:10px 30px; font-size:16px; cursor:pointer; }
+        
+        .files { display:none; }
         .file {
-            background: rgba(0, 40, 0, 0.7);
-            border-left: 5px solid #ffaa00;
-            padding: 12px;
-            margin: 12px 0;
+            background:rgba(0,40,0,0.8);
+            border-left:5px solid #ffaa00;
+            padding:14px;
+            margin:14px 0;
+            line-height:1.5;
         }
-        .glitch { animation: glitch 0.4s linear infinite; }
+        .glitch { animation: glitch 0.5s linear infinite; }
         @keyframes glitch {
-            2%, 64% { transform: translate(2px,0) skew(0deg); }
-            4%, 60% { transform: translate(-2px,0) skew(0deg); }
+            2%,64%{transform:translate(2px,0);}
+            4%,60%{transform:translate(-2px,0);}
         }
-        .error { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
+        .error { color:#ff3333; }
     </style>
 </head>
 <body>
@@ -91,39 +67,55 @@
             
             <div class="content">
                 <div class="header glitch">
-                    <h1>◼ FORD PINES RESEARCH ARCHIVE ◼</h1>
-                    <p>LEVEL 5 CLEARANCE - TOP SECRET</p>
+                    <h1>◼ RESEARCH ARCHIVE ◼</h1>
+                    <p>LEVEL 5 CLEARANCE - DO NOT ATTEMPT TO ACCESS</p>
                 </div>
 
                 <div id="passwordScreen">
+                    <div class="attempts">Kalan Deneme Hakkı: <span id="attempts">5</span></div>
                     <div class="password-area">
                         <p>ENTER PASSWORD TO ACCESS PORTAL DATA:</p>
-                        <input type="password" id="passInput" placeholder="********" maxlength="20" autofocus>
+                        <input type="password" id="passInput" placeholder="********" autofocus>
                         <br><br>
-                        <button onclick="checkPassword()">UNLOCK PORTAL</button>
+                        <button onclick="checkPassword()">UNLOCK</button>
                     </div>
                 </div>
 
                 <div id="files" class="files">
                     <div class="file glitch">
-                        <strong>PORTAL STATUS:</strong> AKTİF — Boyutlar arası kapı açıldı<br>
-                        <span style="color:#ffff00;">Bill Cipher izliyor...</span>
+                        <strong>PORTAL STATUS:</strong> AKTİF<br>
+                        Boyutlar arası yırtık tespit edildi. Karşı tarafa geçiş mümkün.
                     </div>
                     
                     <div class="file">
-                        <strong>FORD PINES NOTLARI</strong><br>
-                        • Anomaliler çok arttı.<br>
-                        • Bill ile anlaşma büyük hataydı.<br>
-                        • Portal kapatılmazsa kasaba yok olacak.
+                        <strong>ANOMALY LOGS</strong><br>
+                        • Yerçekimi tersine döndü (8 olay)<br>
+                        • Zaman döngüleri doğrulandı (Dipper Pines’ın şüpheleri doğru)<br>
+                        • Bilinmeyen yaratıklar: 47 tür<br>
+                        • Weirdness Magnitude: 9.8/10
                     </div>
                     
                     <div class="file">
-                        <strong>SONUÇ:</strong><br>
-                        Gerçeklik yırtılıyor. Her şey çakışıyor.
+                        <strong>BILL CIPHER DOSSIER</strong><br>
+                        Üçgen kaos tanrısı. Zihinleri ele geçirir, anlaşma ile beden alır.<br>
+                        En büyük tehlike. Asla güvenme. Asla çağırma.
                     </div>
                     
-                    <p style="text-align:center; color:#ffff00; margin-top:30px; font-size:18px;">
-                        THE PORTAL IS OPENING...
+                    <div class="file">
+                        <strong>PORTAL UYARISI</strong><br>
+                        Portal tam açılırsa gerçeklik çökebilir.<br>
+                        Kasaba, boyutlar arası bir kapıya dönüşecek.<br>
+                        Bill Cipher serbest kalacak.
+                    </div>
+                    
+                    <div class="file">
+                        <strong>SON NOT:</strong><br>
+                        Keşke bu araştırmayı hiç başlatmasaydım...<br>
+                        Her şey kontrolden çıktı.
+                    </div>
+                    
+                    <p style="text-align:center; color:#ffff00; margin-top:25px; font-size:19px;">
+                        THE PORTAL IS STABILIZING...
                     </p>
                 </div>
             </div>
@@ -131,20 +123,30 @@
     </div>
 
     <script>
+        let attempts = 5;
+
         function checkPassword() {
             const input = document.getElementById('passInput').value.trim();
+            const attemptsEl = document.getElementById('attempts');
             
             if (input.toUpperCase() === "FORD PINES") {
                 document.getElementById('passwordScreen').style.display = 'none';
                 document.getElementById('files').style.display = 'block';
                 document.querySelector('.portal-bg').style.opacity = '0.95';
             } else {
-                alert("ERİŞİM REDDEDİLDİ!\n\nYanlış şifre. Sistem kendini yok etmek üzere...\nFord Pines seni uyarıyor.");
-                document.getElementById('passInput').value = "";
+                attempts--;
+                attemptsEl.textContent = attempts;
+                
+                if (attempts <= 0) {
+                    alert("ERİŞİM TAMAMEN REDDEDİLDİ!\n\nSistem kilitlendi. Kendini silme prosedürü başlatılıyor...");
+                    document.getElementById('passInput').disabled = true;
+                } else {
+                    alert(`HATALI ŞİFRE! ${attempts} deneme hakkın kaldı.\nSistem seni izliyor...`);
+                    document.getElementById('passInput').value = "";
+                }
             }
         }
 
-        // Enter tuşu desteği
         document.getElementById('passInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') checkPassword();
         });
